@@ -1,0 +1,44 @@
+Exploring mtcars via k-means clustering
+Coursera Data Products--Final Assigment
+========================================================
+author: Victor Bernal
+date: `r date()` 
+autosize: true
+[victor-bernal.weebly.com] (http://victor-bernal.weebly.com)
+
+First Slide 
+========================================================
+title: false
+transition: rotate
+The mtcars data comes from the 1974 Motor Trend US magazine. It presents 32 vehicles, with some design/ and performance features. We want to explore how these features separate automobile in classes!
+
+========================================================
+title: false
+transition: zoom
+```{r}
+head(mtcars[,c(1:3)])
+```
+
+========================================================
+title: false
+transition: fade
+```{r, comments=FALSE }
+clusters<-kmeans(mtcars[, c(1,2)], 3)
+        plot(mtcars[, c(1)],mtcars[, c(2)],
+             col = clusters$cluster,
+             pch = 20, cex = 3*(scale(mtcars[,5])+2),
+             xlab=colnames(mtcars)[1], ylab=colnames(mtcars)[2])
+        points(clusters$centers, pch = 1, cex = 4, lwd = 4)
+```    
+========================================================
+title: false
+transition: fade
+
+```{r,echo=FALSE,eval=TRUE,comments=FALSE }
+clusters<-kmeans(mtcars[, c(1,2)], 3)
+  plot(mtcars[, c(1)],mtcars[, c(2)],
+        col = clusters$cluster,
+        pch = 20, cex = 3*(scale(mtcars[,5])+2),
+        xlab=colnames(mtcars)[1], ylab=colnames(mtcars)[2])
+      points(clusters$centers, pch = 1, cex = 4, lwd = 4)
+```    
